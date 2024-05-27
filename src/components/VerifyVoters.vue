@@ -11,7 +11,7 @@
           <button class="btn btn-info" @click="sendToBlockchain">
             Verify eligibility
           </button>
-          <a href="#/" class="btn btn-primary">Back</a>
+          <a href="#/validator" class="btn btn-primary">Back</a>
         </div>
       </div>
     </div>

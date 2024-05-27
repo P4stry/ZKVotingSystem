@@ -51,7 +51,7 @@
           <button class="btn btn-info" @click="sendToBlockchain">
             Confirm vote
           </button>
-          <a href="#/" class="btn btn-primary">Back</a>
+          <a href="#/voter" class="btn btn-primary">Back</a>
         </div>
       </div>
     </div>

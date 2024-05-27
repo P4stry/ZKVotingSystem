@@ -8,6 +8,7 @@
             <a href="#/registration" class="btn btn-primary">Generate Your Vote QR code</a>
             <a href="#/vote" class="btn btn-primary">Vote</a>
             <a href="#/results" class="btn btn-primary">Results</a>
+            <a href="#/" class="btn btn-primary">Back</a>
           </div>
         </div>
       </div>
