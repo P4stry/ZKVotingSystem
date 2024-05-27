@@ -24,7 +24,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import * as ethers from "ethers";
 
 @Component
-export default class ValidatorTool extends Vue {
+export default class VerifyVoters extends Vue {
   public commitment = "";
   public uniqueHash = "";
 

@@ -95,7 +95,7 @@ export default class Vote extends Vue {
     const contracts = await (await fetch("contracts.json")).json();
     const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
     const cd = await calculateMerkleRootAndZKProof(
-      contracts.zktreevote,
+      contracts.zktreevote, // Address of the zktreevote contract, stored in static/contracts.json
       signer,
       TREE_LEVELS,
       commitment,
