@@ -49,7 +49,7 @@
             >
           </div>
           <button class="btn btn-info" @click="sendToBlockchain">
-            Send to blockchain
+            Confirm vote
           </button>
           <a href="#/" class="btn btn-primary">Back</a>
         </div>

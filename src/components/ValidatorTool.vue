@@ -7,9 +7,9 @@
           <h1>Validator tool</h1>
           <div id="reader" width="400px"></div>
           <input type="text" placeholder="commitment" v-model="commitment" />
-          <input type="text" placeholder="Identity Card ID" v-model="uniqueHash" />
+          <input type="text" placeholder="ID Card number" v-model="uniqueHash" />
           <button class="btn btn-info" @click="sendToBlockchain">
-            Send to blockchain
+            Verify eligibility
           </button>
           <a href="#/" class="btn btn-primary">Back</a>
         </div>
@@ -60,7 +60,7 @@ export default class ValidatorTool extends Vue {
       return;
     }
     if (!this.uniqueHash) {
-      alert("Identity Card ID is required");
+      alert("ID Card number is required");
       return;
     }
     try {
