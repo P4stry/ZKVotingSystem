@@ -21,4 +21,7 @@ If you encounter error "Nonce too high. Expected nonce to be 0 but got 4. Note t
 
 [Solved! “Nonce too high” error with MetaMask and Hardhat](https://medium.com/@thelasthash/solved-nonce-too-high-error-with-metamask-and-hardhat-adc66f092cd)
 
+### Run test script
+Using `npx hardhat test`
+
 For more details, please read my article on [Medium](https://thebojda.medium.com/how-i-built-an-anonymous-voting-system-on-the-ethereum-blockchain-using-zero-knowledge-proof-d5ab286228fd)

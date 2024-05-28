@@ -20,7 +20,7 @@ describe("ZKTree Smart contract test", () => {
         const Verifier = await ethers.getContractFactory("Verifier");
         const verifier = await Verifier.deploy();
         const ZKTreeVote = await ethers.getContractFactory("ZKTreeVote");
-        zktreevote = await ZKTreeVote.deploy(TREE_LEVELS, mimcsponge.address, verifier.address, 4);
+        zktreevote = await ZKTreeVote.deploy(TREE_LEVELS, mimcsponge.address, verifier.address, 4, 5);
     });
 
     it("Test the full process", async () => {
@@ -48,6 +48,8 @@ describe("ZKTree Smart contract test", () => {
         console.log(await zktreevote.getOptionCounter(2))
         console.log(await zktreevote.getOptionCounter(3))
         console.log(await zktreevote.getOptionCounter(4))
+
+        console.log(await zktreevote.getExpiry())
     });
 
 });
