@@ -103,10 +103,6 @@ export default class Vote extends Vue {
   }
 
   async getVoteProposal() {
-    if (!this.proposalId) {
-      alert("Please enter the ID of the proposal!");
-      return;
-    }
 
     const abi = [
       "function getVoteProposal(uint id) view public returns (address, string memory, uint, string[] memory)"
