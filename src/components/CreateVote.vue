@@ -18,6 +18,7 @@
             type="text"
           />
           <button class="btn btn-info" @click="createVote">Create</button>
+          <a href="#/validator" class="btn btn-primary">Back</a>
         </div>
       </div>
     </div>
@@ -30,6 +31,7 @@ import * as ethers from "ethers";
 
 @Component
 export default class CreateVote extends Vue {
+  name = "";
   duration = 0;
   number = 0;
   inputBoxes = [];
@@ -39,11 +41,6 @@ export default class CreateVote extends Vue {
   }
 
   async createVote() {
-    // console.log("Recorded values:", this.inputBoxes);
-    // console.log("Duration:", this.duration);
-    // this.inputBoxes.forEach((value, index) => {
-    //   console.log(`Option ${index + 1}: ${value}`);
-    // });
     const TREE_LEVELS = 20;
     const provider = new ethers.providers.Web3Provider(
       (window as any).ethereum
@@ -60,6 +57,20 @@ export default class CreateVote extends Vue {
     const signerAddress = await signer.getAddress();
     await votingSystem.registerValidator(signerAddress)
     console.log(`Validator address: ${signerAddress}`)
+
+    const abi = [
+      "function registerVoteProposal(address _contractAddress, string memory _name, uint _numOptions, string[] memory _options)"
+    ];
+    console.log(this.inputBoxes);
+    let options = [];
+    const contract = new ethers.Contract(contracts.router, abi, signer);
+    for (let i = 0; i < this.number; i++){
+      let option = this.inputBoxes[i];
+      options.push(option);
+    }
+    await contract.registerVoteProposal(votingSystem.address, this.name, this.number, options);
+
+    alert(`Voting system is deployed at ${votingSystem.address}`);
   }
 }
 </script>

@@ -15,6 +15,10 @@ async function main() {
     const verifier = await Verifier.deploy();
     console.log(`Verifier address: ${verifier.address}`)
 
+    const Router = await ethers.getContractFactory("Router");
+    const router = await Router.deploy();
+    console.log(`Router address: ${router.address}`)
+
     const VotingSystem = await ethers.getContractFactory("VotingSystem");
     const votingSystem = await VotingSystem.deploy(TREE_LEVELS, mimcsponge.address, verifier.address, 4, 4);
     console.log(`Voting system address: ${votingSystem.address}`)
@@ -26,7 +30,8 @@ async function main() {
     fs.writeFileSync("static/contracts.json", JSON.stringify({
         mimc: mimcsponge.address,
         verifier: verifier.address,
-        votingSystem: votingSystem.address
+        votingSystem: votingSystem.address,
+        router: router.address
     }))
 }
 
