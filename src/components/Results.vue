@@ -5,10 +5,10 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Results</h1>
-          <div class="text-start">1st option: {{ options[0] }}</div>
-          <div class="text-start">2nd option: {{ options[1] }}</div>
-          <div class="text-start">3rd option: {{ options[2] }}</div>
-          <div class="text-start">4th option: {{ options[3] }}</div>
+          <div class="text-start">Apple: {{ options[0] }}</div>
+          <div class="text-start">Banana: {{ options[1] }}</div>
+          <div class="text-start">Orange: {{ options[2] }}</div>
+          <div class="text-start">Pear: {{ options[3] }}</div>
           <a href="#/" class="btn btn-primary">Back</a>
         </div>
       </div>

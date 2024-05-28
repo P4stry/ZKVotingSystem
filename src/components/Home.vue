@@ -5,9 +5,11 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Scalable Voting System</h1>
-          <h2>I'm a</h2>
-          <a href="#/validator" class="btn btn-primary">Validator</a>
-          <a href="#/voter" class="btn btn-primary">Voter</a>
+            <div class = "col justify-content-md-center">
+              <h2>I'm a</h2>
+              <a href="#/validator" class="btn btn-primary">Validator</a>
+              <a href="#/voter" class="btn btn-primary">Voter</a>
+            </div>
         </div>
       </div>
     </div>

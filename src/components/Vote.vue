@@ -16,7 +16,7 @@
               @click="option = 1"
             />
             <label class="btn btn-outline-dark" for="vbtn-radio1"
-              >1st option</label
+              >Apple</label
             >
             <input
               type="radio"
@@ -26,7 +26,7 @@
               @click="option = 2"
             />
             <label class="btn btn-outline-dark" for="vbtn-radio2"
-              >2nd option</label
+              >Banana</label
             >
             <input
               type="radio"
@@ -36,7 +36,7 @@
               @click="option = 3"
             />
             <label class="btn btn-outline-dark" for="vbtn-radio3"
-              >3rd option</label
+              >Orange</label
             >
             <input
               type="radio"
@@ -46,7 +46,7 @@
               @click="option = 4"
             />
             <label class="btn btn-outline-dark" for="vbtn-radio4"
-              >4th option</label
+              >Pear</label
             >
           </div>
           <button class="btn btn-info" @click="sendToBlockchain">
