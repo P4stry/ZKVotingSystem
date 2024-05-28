@@ -17,11 +17,11 @@ contract ZKTreeVote is ZKTree {
     event RegisterCommitment(uint256 uniqueHashes);
     event Vote(uint option, bytes32 nullifierHash);
 
-    constructor(uint32 _levels, IHasher _hasher, IVerifier _verifier, uint _numOptions, uint _endsAfter) ZKTree(_levels, _hasher, _verifier) {
+    constructor(uint32 _levels, IHasher _hasher, IVerifier _verifier, uint _numOptions, uint endsAfter) ZKTree(_levels, _hasher, _verifier) {
         owner = msg.sender;
         numOptions = _numOptions;
         startsAt = block.timestamp;
-        endsAt = startsAt + _endsAfter * 1 days;
+        endsAt = startsAt + endsAfter * 1 days;
         for (uint i = 0; i <= numOptions; i++) optionCounter[i] = 0;
     }
 
