@@ -5,7 +5,7 @@
         <div class="col-lg-4">
           <div class="text-center vstack gap-3">
             <h1>Voter tool</h1>
-            <a href="#/registration" class="btn btn-primary">Generate Your Vote QR code</a>
+            <a href="#/voterRegistration" class="btn btn-primary">Generate Your Vote QR code</a>
             <a href="#/vote" class="btn btn-primary">Vote</a>
             <a href="#/results" class="btn btn-primary">Results</a>
             <a href="#/" class="btn btn-primary">Back</a>

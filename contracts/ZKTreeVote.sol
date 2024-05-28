@@ -22,6 +22,7 @@ contract ZKTreeVote is ZKTree {
 
     function registerValidator(address _validator) external {
         require(msg.sender == owner, "Only owner can add validator!");
+        require(!validators[_validator], "Validator already registered!");
         validators[_validator] = true;
         emit RegisterValidator(_validator);
     }

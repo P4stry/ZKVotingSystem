@@ -4,7 +4,7 @@
     <div class="row justify-content-md-center">
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
-          <h1>Validator tool</h1>
+          <h1>Verify voter's eligibility</h1>
           <div id="reader" width="400px"></div>
           <input type="text" placeholder="commitment" v-model="commitment" />
           <input type="text" placeholder="ID Card number" v-model="uniqueHash" />
