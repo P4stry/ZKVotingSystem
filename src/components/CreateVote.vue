@@ -1,36 +1,29 @@
 <template>
-    <h1>Dynamic Input Boxes</h1>
-    <div>
-    <input v-model="numberOfInputs" type="number" placeholder="Enter a number" />
-    <button @click="createInputs">Confirm</button>
+    <div id="inputContainer">
+      <label for="numberInput">Enter a number: </label>
+      <input type="number" v-model="number" min="1" required />
+      <button @click="generateInputBoxes">Confirm</button>
     </div>
-    <div v-if="inputs.length > 0">
-    <h2>Generated Input Boxes</h2>
-    <div v-for="(input, index) in inputs" :key="index">
-        <input type="text" :placeholder="'Input ' + (index + 1)" v-model="inputs[index]" />
+    <div id="inputBoxes">
+      <input
+        v-for="index in inputBoxes"
+        :key="index"
+        type="text"
+        class="inputBox"
+      />
     </div>
-    </div>
-  </template>
+</template>
   
-<script lang = "ts">
+<script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
 
 @Component
-export default class CreateVote extends Vue{
-  data() {
-    return {
-      numberOfInputs: '',
-      inputs: []
-    };
-  }
-  async createInputs() {
-    const num = parseInt(this.numberOfInputs);
-    if (!isNaN(num) && num > 0) {
-      this.inputs = Array(num).fill('');
-    } else {
-      this.inputs = [];
-      alert('Please enter a valid positive number');
-    }
+export default class CreateVote extends Vue {
+  number = 0;
+  inputBoxes = [];
+
+  generateInputBoxes() {
+    this.inputBoxes = Array.from({ length: this.number }, (_, i) => i);
   }
 }
 </script>
