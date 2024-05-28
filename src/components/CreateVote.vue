@@ -6,14 +6,14 @@
           <h1>Create new Vote Proposal</h1>
           <h2>Enter the number of options: </h2>
           <input type="number" placeholder="Integer from 1 to 100" v-model="number" min="1" required />
-          <button @click="generateInputBoxes">Confirm</button>
+          <button class="btn btn-info" @click="generateInputBoxes">Confirm</button>
           <input
             v-for="index in inputBoxes"
             :key="index"
             type="text"
             class="inputBox"
           />
-          <button @click="logValues">Log Values</button>
+          <button class="btn btn-info" @click="logValues">Create</button>
       </div>
     </div>
   </main>
