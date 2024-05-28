@@ -5,7 +5,7 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Create new Vote Proposal</h1>
-          <h2>Enter the voting duration: </h2>
+          <h2>Enter the voting duration (days): </h2>
           <input type="number" placeholder="Integer from 1 to 100" v-model="duration" min="1" required />
           <h2>Enter the number of options: </h2>
           <input type="number" placeholder="Integer from 1 to 100" v-model="number" min="1" required />
@@ -23,7 +23,7 @@
     </div>
   </main>
 </template>
-  
+
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
 import * as ethers from "ethers";
@@ -39,13 +39,25 @@ export default class CreateVote extends Vue {
   }
 
   async createVote() {
-    // const VotingSystem = await ethers.getContractFactory("VotingSystem");
-    // const votingSystem = await VotingSystem.deploy(TREE_LEVELS, mimcsponge.address, verifier.address, 4, 4);
-    console.log("Recorded values:", this.inputBoxes);
-    console.log("Duration:", this.duration);
-    this.inputBoxes.forEach((value, index) => {
-      console.log(`Option ${index + 1}: ${value}`);
-    });
+    // console.log("Recorded values:", this.inputBoxes);
+    // console.log("Duration:", this.duration);
+    // this.inputBoxes.forEach((value, index) => {
+    //   console.log(`Option ${index + 1}: ${value}`);
+    // });
+    const TREE_LEVELS = 20;
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const contracts = await (await fetch("contracts.json")).json();
+    
+    const VotingSystem = await ethers.getContractFactory("VotingSystem");
+    const votingSystem = await VotingSystem.deploy(TREE_LEVELS, contracts.mimcsponge, contracts.verifier, this.number, this.duration);
+    console.log(`Voting system address: ${votingSystem.address}`);
+
+    await votingSystem.registerValidator(signer)
+    console.log(`Validator address: ${signer}`)
   }
 }
 </script>
