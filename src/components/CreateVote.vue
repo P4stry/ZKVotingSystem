@@ -12,8 +12,8 @@
     </div>
   </template>
   
-<script>
-import { Component, Vue } from 'vue-facing-decorator';
+<script lang = "ts">
+import { Component, Vue } from "vue-facing-decorator";
 
 @Component
 export default class CreateVote extends Vue{
