@@ -5,7 +5,7 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Vote</h1>
-          <h2>Expire at {{ expiry }}</h2>
+          <h2>Expire in: {{ expiry }} s</h2>
           Choose one option
           <div class="btn-group-vertical" role="group">
             <input
@@ -69,7 +69,7 @@ const TREE_LEVELS = 20;
 
 @Component
 export default class Vote extends Vue {
-  public expiry;
+  public expiry = 0;
   public option = 0;
 
   mounted() {
@@ -86,8 +86,7 @@ export default class Vote extends Vue {
     const signer = provider.getSigner();
     const contracts = await (await fetch("contracts.json")).json();
     const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
-    const expiry_s = await contract.getExpiry();
-    this.expiry = new Date(expiry_s * 1000);
+    this.expiry = (await contract.getExpiry()).toString();
   }
 
   async sendToBlockchain() {

@@ -41,6 +41,7 @@ export default class Results extends Vue {
     for (let i = 0; i < 4; i++) {
       this.options[i] = (await contract.getOptionCounter(i + 1)).toString();
     }
+    console.log(this.options[3]);
   }
 }
 </script>
