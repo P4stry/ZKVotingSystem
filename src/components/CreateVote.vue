@@ -69,6 +69,8 @@ export default class CreateVote extends Vue {
       options.push(option);
     }
     await contract.registerVoteProposal(votingSystem.address, this.name, this.number, options);
+
+    alert(`Voting system is deployed at ${votingSystem.address}`);
   }
 }
 </script>
