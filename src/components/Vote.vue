@@ -87,6 +87,7 @@ export default class Vote extends Vue {
     const contracts = await (await fetch("contracts.json")).json();
     const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
     this.expiry = (await contract.getExpiry()).toString();
+    console.log(this.expiry);
   }
 
   async sendToBlockchain() {
