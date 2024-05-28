@@ -9,6 +9,7 @@ import Home from "./Home.vue";
 import Validator from "./Validator.vue"; // validators
 import VerifyVoters from "./VerifyVoters.vue"; // validators
 import ValidatorRegistration from "./ValidatorRegistration.vue"; // validators
+import CreateVote from "./CreateVote.vue"; // validators
 import VoterRegistration from "./VoterRegistration.vue"; // voters
 import Vote from "./Vote.vue"; // voters
 import Voter from "./Voter.vue"; // voters
@@ -35,6 +36,7 @@ export default class App extends Vue {
     if (currentPath == "/validator") return Validator;
     if (currentPath == "/verifyVoters") return VerifyVoters;
     if (currentPath == "/registerValidator") return ValidatorRegistration;
+    if (currentPath == "/createVote") return CreateVote;
 
     if (currentPath == "/voter") return Voter;
     if (currentPath == "/voterRegistration") return VoterRegistration;

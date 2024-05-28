@@ -7,6 +7,7 @@
             <h1>Validator tool</h1>
             <a href="#/registerValidator" class="btn btn-primary">Register new Validator</a>
             <a href="#/verifyVoters" class="btn btn-primary">Verify voter's eligibility</a>
+            <a href="#/createVote" class="btn btn-primary">Create new Vote</a>
             <a href="#/results" class="btn btn-primary">Results</a>
             <a href="#/" class="btn btn-primary">Back</a>
           </div>
