@@ -1,17 +1,20 @@
 <template>
-    <div id="inputContainer">
-      <label for="numberInput">Enter a number: </label>
-      <input type="number" v-model="number" min="1" required />
-      <button @click="generateInputBoxes">Confirm</button>
+  <main role="main" class="container">
+    <div style="padding-top: 7rem" class="d-none d-lg-block"></div>
+    <div class="row justify-content-md-center">
+        <div class="text-center vstack gap-3">
+          <label for="numberInput">Enter a number: </label>
+          <input type="number" v-model="number" min="1" required />
+          <button @click="generateInputBoxes">Confirm</button>
+          <input
+            v-for="index in inputBoxes"
+            :key="index"
+            type="text"
+            class="inputBox"
+          />
+      </div>
     </div>
-    <div id="inputBoxes">
-      <input
-        v-for="index in inputBoxes"
-        :key="index"
-        type="text"
-        class="inputBox"
-      />
-    </div>
+  </main>
 </template>
   
 <script lang="ts">
