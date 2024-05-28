@@ -9,8 +9,9 @@
           <input type="number" placeholder="Integer from 1 to 100" v-model="number" min="1" required />
           <button class="btn btn-info" @click="generateInputBoxes">Confirm</button>
           <input
-            v-for="index in inputBoxes"
+            v-for="(value, index) in inputBoxes"
             :key="index"
+            v-model="inputBoxes[index]"
             type="text"
             class="inputBox"
           />
@@ -34,8 +35,8 @@ export default class CreateVote extends Vue {
   }
 
   logValues() {
-    console.log("Recorded values:", this.values);
-    this.inputBoxes.forEach((index, value) => {
+    console.log("Recorded values:", this.inputBoxes);
+    this.inputBoxes.forEach((value, index) => {
       console.log(`Option ${index + 1}: ${value}`);
     });
   }
