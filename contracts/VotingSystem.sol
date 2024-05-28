@@ -3,7 +3,7 @@ pragma solidity ^0.8.17;
 
 import "zk-merkle-tree/contracts/ZKTree.sol";
 
-contract ZKTreeVote is ZKTree {
+contract VotingSystem is ZKTree {
     address public owner;
     uint numOptions;
     uint endsAt;

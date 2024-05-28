@@ -85,7 +85,7 @@ export default class Vote extends Vue {
     );
     const signer = provider.getSigner();
     const contracts = await (await fetch("contracts.json")).json();
-    const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
+    const contract = new ethers.Contract(contracts.votingSystem, abi, signer);
     this.expiry = (await contract.getExpiry()).toString();
     console.log(this.expiry);
   }
@@ -113,9 +113,9 @@ export default class Vote extends Vue {
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     const contracts = await (await fetch("contracts.json")).json();
-    const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
+    const contract = new ethers.Contract(contracts.votingSystem, abi, signer);
     const cd = await calculateMerkleRootAndZKProof(
-      contracts.zktreevote, // Address of the zktreevote contract, stored in static/contracts.json
+      contracts.votingSystem, // Address of the VotingSystem contract, stored in static/contracts.json
       signer,
       TREE_LEVELS,
       commitment,

@@ -35,7 +35,7 @@ export default class ValidatorRegistration extends Vue {
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
         const contracts = await (await fetch("contracts.json")).json();
-        const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
+        const contract = new ethers.Contract(contracts.votingSystem, abi, signer);
         if (!this.validatorAddress) {
             alert("Validator Address is required");
             return;

@@ -37,7 +37,7 @@ export default class Results extends Vue {
     );
     const signer = provider.getSigner();
     const contracts = await (await fetch("contracts.json")).json();
-    const contract = new ethers.Contract(contracts.zktreevote, abi, signer);
+    const contract = new ethers.Contract(contracts.votingSystem, abi, signer);
     for (let i = 0; i < 4; i++) {
       this.options[i] = (await contract.getOptionCounter(i + 1)).toString();
     }
