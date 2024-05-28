@@ -13,6 +13,7 @@
             type="text"
             class="inputBox"
           />
+          <button @click="logValues">Log Values</button>
       </div>
     </div>
   </main>
@@ -28,6 +29,13 @@ export default class CreateVote extends Vue {
 
   generateInputBoxes() {
     this.inputBoxes = Array.from({ length: this.number }, (_, i) => i);
+  }
+
+  logValues() {
+    console.log("Recorded values:", this.values);
+    this.inputBoxes.forEach((value, index) => {
+      console.log(`Option ${index + 1}: ${value}`);
+    });
   }
 }
 </script>
