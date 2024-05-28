@@ -116,6 +116,7 @@ export default class Vote extends Vue {
     const contract = new ethers.Contract(contracts.router, abi, signer);
     const proposal = await contract.getVoteProposal(this.proposalId);
     console.log(proposal);
+    this.options = proposal[3];
   }
 
   async sendToBlockchain() {
