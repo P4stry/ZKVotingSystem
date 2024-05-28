@@ -5,7 +5,7 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Vote</h1>
-          <h2>Expire in: {{ expiry }} s</h2>
+          <h2>Expire in {{ expiry }} s</h2>
           Choose one option
           <div class="btn-group-vertical" role="group">
             <input

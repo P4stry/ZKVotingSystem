@@ -6,7 +6,6 @@ import "zk-merkle-tree/contracts/ZKTree.sol";
 contract ZKTreeVote is ZKTree {
     address public owner;
     uint numOptions;
-    uint startsAt;
     uint endsAt;
 
     mapping(address => bool) public validators;
@@ -20,8 +19,7 @@ contract ZKTreeVote is ZKTree {
     constructor(uint32 _levels, IHasher _hasher, IVerifier _verifier, uint _numOptions, uint endsAfter) ZKTree(_levels, _hasher, _verifier) {
         owner = msg.sender;
         numOptions = _numOptions;
-        startsAt = block.timestamp;
-        endsAt = startsAt + endsAfter * 1 days;
+        endsAt = block.timestamp + endsAfter * 1 days;
         for (uint i = 0; i <= numOptions; i++) optionCounter[i] = 0;
     }
 
@@ -57,6 +55,6 @@ contract ZKTreeVote is ZKTree {
     }
 
     function getExpiry() external view returns (uint) {
-        return endsAt - startsAt;
+        return endsAt - block.timestamp;
     }
 }
