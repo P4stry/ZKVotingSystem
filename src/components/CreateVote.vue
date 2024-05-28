@@ -59,6 +59,18 @@ export default class CreateVote extends Vue {
     const signerAddress = await signer.getAddress();
     await votingSystem.registerValidator(signerAddress)
     console.log(`Validator address: ${signerAddress}`)
+
+    const abi = [
+      "function registerVoteProposal(address _contractAddress, string memory _name, uint _numOptions, string[] memory _options)"
+    ];
+    console.log(this.inputBoxes);
+    let options = [];
+    const contract = new ethers.Contract(contracts.router, abi, signer);
+    for (let i = 0; i < this.number; i++){
+      let option = this.inputBoxes[i];
+      options.push(option);
+    }
+    await contract.registerVoteProposal(votingSystem.address, this.name, this.number, options);
   }
 }
 </script>
