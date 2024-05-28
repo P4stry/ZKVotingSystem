@@ -23,5 +23,3 @@ If you encounter error "Nonce too high. Expected nonce to be 0 but got 4. Note t
 
 ### Run test script
 Using `npx hardhat test`
-
-For more details, please read my article on [Medium](https://thebojda.medium.com/how-i-built-an-anonymous-voting-system-on-the-ethereum-blockchain-using-zero-knowledge-proof-d5ab286228fd)
