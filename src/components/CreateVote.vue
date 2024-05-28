@@ -56,9 +56,10 @@ export default class CreateVote extends Vue {
     const VotingSystem = new ethers.ContractFactory(factory.abi, factory.bytecode, signer);
     const votingSystem = await VotingSystem.deploy(TREE_LEVELS, contracts.mimc, contracts.verifier, this.number, this.duration);
     console.log(`Voting system address: ${votingSystem.address}`);
-
-    await votingSystem.registerValidator(signer)
-    console.log(`Validator address: ${signer}`)
+    
+    const signerAddress = await signer.getAddress();
+    await votingSystem.registerValidator(signerAddress)
+    console.log(`Validator address: ${signerAddress}`)
   }
 }
 </script>
