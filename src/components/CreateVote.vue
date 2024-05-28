@@ -53,12 +53,8 @@ export default class CreateVote extends Vue {
     const contracts = await (await fetch("contracts.json")).json();
     
     const factory = await (await fetch("VotingSystem.json")).json();
-    console.log(`Signer: ${signer}`);
-    console.log(`Mimc: ${contracts.mimcsponge} Verifier: ${contracts.verifier} Tree levels: ${TREE_LEVELS} Duration: ${this.duration} Number: ${this.number}`);
     const VotingSystem = new ethers.ContractFactory(factory.abi, factory.bytecode, signer);
-    console.log(`Signer ${signer}`);
-    console.log(`Mimc: ${contracts.mimcsponge} Verifier: ${contracts.verifier} Tree levels: ${TREE_LEVELS} Duration: ${this.duration} Number: ${this.number}`);
-    const votingSystem = await VotingSystem.deploy(TREE_LEVELS, contracts.mimcsponge, contracts.verifier, this.number, this.duration);
+    const votingSystem = await VotingSystem.deploy(TREE_LEVELS, contracts.mimc, contracts.verifier, this.number, this.duration);
     console.log(`Voting system address: ${votingSystem.address}`);
 
     await votingSystem.registerValidator(signer)
