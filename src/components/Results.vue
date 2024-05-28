@@ -21,7 +21,7 @@ import { Component, Vue } from "vue-facing-decorator";
 import * as ethers from "ethers";
 
 @Component
-export default class Vote extends Vue {
+export default class Results extends Vue {
   public options = [0, 0, 0, 0];
 
   mounted() {
@@ -41,7 +41,6 @@ export default class Vote extends Vue {
     for (let i = 0; i < 4; i++) {
       this.options[i] = (await contract.getOptionCounter(i + 1)).toString();
     }
-    console.log(this.options[3]);
   }
 }
 </script>

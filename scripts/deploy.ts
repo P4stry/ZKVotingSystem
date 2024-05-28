@@ -16,7 +16,7 @@ async function main() {
     console.log(`Verifier address: ${verifier.address}`)
 
     const ZKTreeVote = await ethers.getContractFactory("ZKTreeVote");
-    const zktreevote = await ZKTreeVote.deploy(TREE_LEVELS, mimcsponge.address, verifier.address, 4);
+    const zktreevote = await ZKTreeVote.deploy(TREE_LEVELS, mimcsponge.address, verifier.address, 4, 3);
     console.log(`ZKTreeVote address: ${zktreevote.address}`)
 
     // add the 2nd hardhat account as a validator
