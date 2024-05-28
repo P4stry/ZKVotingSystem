@@ -5,8 +5,6 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Create new Vote Proposal</h1>
-          <h2>Enter the name of Proposal: </h2>
-          <input type="text" placeholder="The name of Vote Proposal" v-model="name" min="1" required />
           <h2>Enter the voting duration (days): </h2>
           <input type="number" placeholder="Integer from 1 to 100" v-model="duration" min="1" required />
           <h2>Enter the number of options: </h2>

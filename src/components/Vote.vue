@@ -5,16 +5,6 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Vote</h1>
-          <h2>Enter the ID of Proposal: </h2>
-          <input type="number" placeholder="The ID of Vote Proposal" v-model="proposalId" />
-          <button class="btn btn-info" @click="getVoteProposal">Confirm</button>
-          <input
-            v-for="(value, index) in options"
-            :key = "value"
-            v-model="options[index]"
-            type="radio"
-            class="btn-check"
-          />
           <h2>Expire in {{ expiry }} s</h2>
           Choose one option
           <div class="btn-group-vertical" role="group">
@@ -79,8 +69,6 @@ const TREE_LEVELS = 20;
 
 @Component
 export default class Vote extends Vue {
-  public proposalId = 0;
-  public options = [];
   public expiry = 0;
   public option = 0;
 
@@ -100,23 +88,6 @@ export default class Vote extends Vue {
     const contract = new ethers.Contract(contracts.votingSystem, abi, signer);
     this.expiry = (await contract.getExpiry()).toString();
     console.log(this.expiry);
-  }
-
-  async getVoteProposal() {
-
-    const abi = [
-      "function getVoteProposal(uint id) view public returns (address, string memory, uint, string[] memory)"
-    ];
-    const provider = new ethers.providers.Web3Provider(
-      (window as any).ethereum
-    );
-    await provider.send("eth_requestAccounts", []);
-    const signer = provider.getSigner();
-    const contracts = await (await fetch("contracts.json")).json();
-    const contract = new ethers.Contract(contracts.router, abi, signer);
-    const proposal = await contract.getVoteProposal(this.proposalId);
-    console.log(proposal);
-    this.options = proposal[3];
   }
 
   async sendToBlockchain() {
