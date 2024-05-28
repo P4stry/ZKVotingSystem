@@ -5,6 +5,8 @@
       <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Create new Vote Proposal</h1>
+          <h2>Enter the name of Proposal: </h2>
+          <input type="text" placeholder="The name of Vote Proposal" v-model="name" min="1" required />
           <h2>Enter the voting duration (days): </h2>
           <input type="number" placeholder="Integer from 1 to 100" v-model="duration" min="1" required />
           <h2>Enter the number of options: </h2>
@@ -18,6 +20,7 @@
             type="text"
           />
           <button class="btn btn-info" @click="createVote">Create</button>
+          <a href="#/validator" class="btn btn-primary">Back</a>
         </div>
       </div>
     </div>
@@ -30,6 +33,7 @@ import * as ethers from "ethers";
 
 @Component
 export default class CreateVote extends Vue {
+  name = "";
   duration = 0;
   number = 0;
   inputBoxes = [];
@@ -39,11 +43,6 @@ export default class CreateVote extends Vue {
   }
 
   async createVote() {
-    // console.log("Recorded values:", this.inputBoxes);
-    // console.log("Duration:", this.duration);
-    // this.inputBoxes.forEach((value, index) => {
-    //   console.log(`Option ${index + 1}: ${value}`);
-    // });
     const TREE_LEVELS = 20;
     const provider = new ethers.providers.Web3Provider(
       (window as any).ethereum
