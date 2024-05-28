@@ -6,8 +6,8 @@ import "zk-merkle-tree/contracts/ZKTree.sol";
 contract ZKTreeVote is ZKTree {
     address public owner;
     uint numOptions;
-    uint timeout;
-    uint endsAfter;
+    uint startsAt;
+    uint endsAt;
 
     mapping(address => bool) public validators;
     mapping(uint256 => bool) uniqueHashes;
@@ -20,8 +20,8 @@ contract ZKTreeVote is ZKTree {
     constructor(uint32 _levels, IHasher _hasher, IVerifier _verifier, uint _numOptions, uint _endsAfter) ZKTree(_levels, _hasher, _verifier) {
         owner = msg.sender;
         numOptions = _numOptions;
-        endsAfter = _endsAfter;
-        timeout = block.timestamp + endsAfter * 1 days;
+        startsAt = block.timestamp;
+        endsAt = startsAt + _endsAfter * 1 days;
         for (uint i = 0; i <= numOptions; i++) optionCounter[i] = 0;
     }
 
@@ -45,7 +45,7 @@ contract ZKTreeVote is ZKTree {
     }
 
     function vote(uint _option, uint256 _nullifier, uint256 _root, uint[2] memory _proof_a, uint[2][2] memory _proof_b, uint[2] memory _proof_c) external {
-        require(block.timestamp < timeout, "Voting has ended!");
+        require(block.timestamp < endsAt, "Voting has ended!");
         require(_option <= numOptions, "Invalid option!");
         _nullify(bytes32(_nullifier), bytes32(_root), _proof_a, _proof_b, _proof_c);
         optionCounter[_option] = optionCounter[_option] + 1;
@@ -57,6 +57,6 @@ contract ZKTreeVote is ZKTree {
     }
 
     function getExpiry() external view returns (uint) {
-        return endsAfter;
+        return endsAt - startsAt;
     }
 }
