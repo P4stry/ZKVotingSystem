@@ -2,6 +2,7 @@
   <main role="main" class="container">
     <div style="padding-top: 7rem" class="d-none d-lg-block"></div>
     <div class="row justify-content-md-center">
+      <div class="col-lg-4">
         <div class="text-center vstack gap-3">
           <h1>Create new Vote Proposal</h1>
           <h2>Enter the number of options: </h2>
@@ -14,6 +15,7 @@
             class="inputBox"
           />
           <button class="btn btn-info" @click="logValues">Create</button>
+        </div>
       </div>
     </div>
   </main>
@@ -33,7 +35,7 @@ export default class CreateVote extends Vue {
 
   logValues() {
     console.log("Recorded values:", this.values);
-    this.inputBoxes.forEach((value, index) => {
+    this.inputBoxes.forEach((index, value) => {
       console.log(`Option ${index + 1}: ${value}`);
     });
   }
